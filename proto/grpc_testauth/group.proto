@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+package grpc_testauth.group;
+
+message Group {
+    int32 id = 1;
+    string name = 2;
+    string sso_urn = 3;
+}
+
+message GroupMembershipEntry {
+    Group group = 1;
+    bool is_admin = 2;
+}
+
+message GroupSearchRequest {
+    oneof group_identifier {
+        string name = 1;
+        int32 id = 2;
+        string sso_urn = 3;
+    }
+}
+
+message GroupSearchResponse {
+    Group result = 1;
+    bool success = 2;
+}

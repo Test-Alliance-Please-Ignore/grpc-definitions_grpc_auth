@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+package grpc_testauth.eve;
+
+message EVEPlayerAlliance {
+    int64 id = 1;
+    string name = 2;
+    string ticker = 3;
+    EVEPlayerCorporation executor = 4;
+
+}
+
+message EVEPlayerCorporation {
+    int64 id = 1;
+    string name = 2;
+    string ticker = 3;
+    EVEPlayerCharacter ceo_character = 4;
+    EVEPlayerAlliance alliance = 5;
+
+}
+
+message EVEPlayerCharacter {
+    int64 id = 1;
+    string name = 2;
+    EVEPlayerCorporation corporation = 3;
+    int32 race = 4;
+    int32 gender = 5;
+    int32 total_sp = 6;
+}

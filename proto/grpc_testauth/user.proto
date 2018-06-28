@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+import "grpc_testauth/group.proto";
+import "grpc_testauth/eve.proto";
+
+package grpc_testauth.user;
+
+message User {
+    int32 auth_id = 1;
+    string sso_uuid = 2;
+    string username = 3;
+    grpc_testauth.eve.EVEPlayerCharacter primary_character = 4;
+    repeated grpc_testauth.eve.EVEPlayerCharacter characters = 5;
+    repeated grpc_testauth.group.GroupMembershipEntry groups = 6;
+}
+
+message UserSearchRequest {
+    oneof user_identifier {
+        int32 auth_id = 1;
+        string username = 2;
+        string sso_uuid = 3;
+    }
+}
+
+message UserSearchResponse {
+    User result = 1;
+    bool success = 2;
+}
