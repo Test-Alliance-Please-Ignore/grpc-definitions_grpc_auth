@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+import "grpc_testauth/user.proto";
+
+package grpc_testauth.discord;
+
+message LinkDiscordUserRequest {
+    grpc_testauth.user.User user = 1;
+    int64 discord_id = 2; 
+}
+
+message LinkDiscordUserResponse {
+    bool success = 1;
+}

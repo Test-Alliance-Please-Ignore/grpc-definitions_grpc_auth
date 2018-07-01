@@ -15,15 +15,16 @@ _sym_db = _symbol_database.Default()
 
 from grpc_testauth import group_pb2 as grpc__testauth_dot_group__pb2
 from grpc_testauth import user_pb2 as grpc__testauth_dot_user__pb2
+from grpc_testauth import discord_pb2 as grpc__testauth_dot_discord__pb2
 
 
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='grpc_testauth/main.proto',
   package='grpc_testauth',
   syntax='proto3',
-  serialized_pb=_b('\n\x18grpc_testauth/main.proto\x12\rgrpc_testauth\x1a\x19grpc_testauth/group.proto\x1a\x18grpc_testauth/user.proto2k\n\x0cGroupService\x12[\n\x06Search\x12\'.grpc_testauth.group.GroupSearchRequest\x1a(.grpc_testauth.group.GroupSearchResponse2e\n\x0bUserService\x12V\n\x06Search\x12%.grpc_testauth.user.UserSearchRequest\x1a%.grpc_testauth.user.UserSearchRequestb\x06proto3')
+  serialized_pb=_b('\n\x18grpc_testauth/main.proto\x12\rgrpc_testauth\x1a\x19grpc_testauth/group.proto\x1a\x18grpc_testauth/user.proto\x1a\x1bgrpc_testauth/discord.proto2k\n\x0cGroupService\x12[\n\x06Search\x12\'.grpc_testauth.group.GroupSearchRequest\x1a(.grpc_testauth.group.GroupSearchResponse2e\n\x0bUserService\x12V\n\x06Search\x12%.grpc_testauth.user.UserSearchRequest\x1a%.grpc_testauth.user.UserSearchRequest2~\n\x07\x44iscord\x12s\n\x12LinkDiscordAccount\x12-.grpc_testauth.discord.LinkDiscordUserRequest\x1a..grpc_testauth.discord.LinkDiscordUserResponseb\x06proto3')
   ,
-  dependencies=[grpc__testauth_dot_group__pb2.DESCRIPTOR,grpc__testauth_dot_user__pb2.DESCRIPTOR,])
+  dependencies=[grpc__testauth_dot_group__pb2.DESCRIPTOR,grpc__testauth_dot_user__pb2.DESCRIPTOR,grpc__testauth_dot_discord__pb2.DESCRIPTOR,])
 
 
 
@@ -37,8 +38,8 @@ _GROUPSERVICE = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=0,
   options=None,
-  serialized_start=96,
-  serialized_end=203,
+  serialized_start=125,
+  serialized_end=232,
   methods=[
   _descriptor.MethodDescriptor(
     name='Search',
@@ -61,8 +62,8 @@ _USERSERVICE = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=1,
   options=None,
-  serialized_start=205,
-  serialized_end=306,
+  serialized_start=234,
+  serialized_end=335,
   methods=[
   _descriptor.MethodDescriptor(
     name='Search',
@@ -77,5 +78,29 @@ _USERSERVICE = _descriptor.ServiceDescriptor(
 _sym_db.RegisterServiceDescriptor(_USERSERVICE)
 
 DESCRIPTOR.services_by_name['UserService'] = _USERSERVICE
+
+
+_DISCORD = _descriptor.ServiceDescriptor(
+  name='Discord',
+  full_name='grpc_testauth.Discord',
+  file=DESCRIPTOR,
+  index=2,
+  options=None,
+  serialized_start=337,
+  serialized_end=463,
+  methods=[
+  _descriptor.MethodDescriptor(
+    name='LinkDiscordAccount',
+    full_name='grpc_testauth.Discord.LinkDiscordAccount',
+    index=0,
+    containing_service=None,
+    input_type=grpc__testauth_dot_discord__pb2._LINKDISCORDUSERREQUEST,
+    output_type=grpc__testauth_dot_discord__pb2._LINKDISCORDUSERRESPONSE,
+    options=None,
+  ),
+])
+_sym_db.RegisterServiceDescriptor(_DISCORD)
+
+DESCRIPTOR.services_by_name['Discord'] = _DISCORD
 
 # @@protoc_insertion_point(module_scope)
