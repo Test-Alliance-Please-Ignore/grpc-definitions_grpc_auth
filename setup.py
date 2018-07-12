@@ -1,7 +1,7 @@
 from setuptools import setup
 
 setup(name='grpc_testauth',
-    version='0.2',
+    version='0.3',
     packages=['grpc_testauth'],
     install_requires = [
         'grpcio',

@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+import "grpc_testauth/user.proto";
+
+package grpc_testauth.services;
+
+message Service {
+    string api = 1;
+}
+
+message ServiceAccount {
+    Service service = 1;
+    grpc_testauth.user.User user = 2;
+    bool active = 3;
+    string service_uid = 4;
+}

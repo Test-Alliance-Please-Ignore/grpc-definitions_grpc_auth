@@ -2,7 +2,6 @@ syntax = "proto3";
 
 import "grpc_testauth/group.proto";
 import "grpc_testauth/user.proto";
-import "grpc_testauth/discord.proto";
 
 package grpc_testauth;
 
@@ -11,9 +10,5 @@ service GroupService {
 }
 
 service UserService {
-    rpc Search (grpc_testauth.user.UserSearchRequest) returns (grpc_testauth.user.UserSearchRequest);
-}
-
-service Discord {
-    rpc LinkDiscordAccount(grpc_testauth.discord.LinkDiscordUserRequest) returns (grpc_testauth.discord.LinkDiscordUserResponse);
+    rpc Search (grpc_testauth.user.UserSearchRequest) returns (grpc_testauth.user.UserSearchResponse);
 }
