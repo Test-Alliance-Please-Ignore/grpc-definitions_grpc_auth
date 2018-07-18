@@ -62,6 +62,11 @@ class UserServiceStub(object):
         request_serializer=grpc__testauth_dot_user__pb2.UserSearchRequest.SerializeToString,
         response_deserializer=grpc__testauth_dot_user__pb2.UserSearchResponse.FromString,
         )
+    self.ServiceSearch = channel.unary_unary(
+        '/grpc_testauth.UserService/ServiceSearch',
+        request_serializer=grpc__testauth_dot_user__pb2.UserServiceSearchRequest.SerializeToString,
+        response_deserializer=grpc__testauth_dot_user__pb2.UserSearchResponse.FromString,
+        )
 
 
 class UserServiceServicer(object):
@@ -75,12 +80,24 @@ class UserServiceServicer(object):
     context.set_details('Method not implemented!')
     raise NotImplementedError('Method not implemented!')
 
+  def ServiceSearch(self, request, context):
+    # missing associated documentation comment in .proto file
+    pass
+    context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+    context.set_details('Method not implemented!')
+    raise NotImplementedError('Method not implemented!')
+
 
 def add_UserServiceServicer_to_server(servicer, server):
   rpc_method_handlers = {
       'Search': grpc.unary_unary_rpc_method_handler(
           servicer.Search,
           request_deserializer=grpc__testauth_dot_user__pb2.UserSearchRequest.FromString,
+          response_serializer=grpc__testauth_dot_user__pb2.UserSearchResponse.SerializeToString,
+      ),
+      'ServiceSearch': grpc.unary_unary_rpc_method_handler(
+          servicer.ServiceSearch,
+          request_deserializer=grpc__testauth_dot_user__pb2.UserServiceSearchRequest.FromString,
           response_serializer=grpc__testauth_dot_user__pb2.UserSearchResponse.SerializeToString,
       ),
   }

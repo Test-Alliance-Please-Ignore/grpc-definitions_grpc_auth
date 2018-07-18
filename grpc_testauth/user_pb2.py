@@ -21,7 +21,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='grpc_testauth/user.proto',
   package='grpc_testauth.user',
   syntax='proto3',
-  serialized_pb=_b('\n\x18grpc_testauth/user.proto\x12\x12grpc_testauth.user\x1a\x19grpc_testauth/group.proto\x1a\x17grpc_testauth/eve.proto\"\xf3\x01\n\x04User\x12\x0f\n\x07\x61uth_id\x18\x01 \x01(\x05\x12\x10\n\x08sso_uuid\x18\x02 \x01(\t\x12\x10\n\x08username\x18\x03 \x01(\t\x12@\n\x11primary_character\x18\x04 \x01(\x0b\x32%.grpc_testauth.eve.EVEPlayerCharacter\x12\x39\n\ncharacters\x18\x05 \x03(\x0b\x32%.grpc_testauth.eve.EVEPlayerCharacter\x12\x39\n\x06groups\x18\x06 \x03(\x0b\x32).grpc_testauth.group.GroupMembershipEntry\"a\n\x11UserSearchRequest\x12\x11\n\x07\x61uth_id\x18\x01 \x01(\x05H\x00\x12\x12\n\x08username\x18\x02 \x01(\tH\x00\x12\x12\n\x08sso_uuid\x18\x03 \x01(\tH\x00\x42\x11\n\x0fuser_identifier\"O\n\x12UserSearchResponse\x12(\n\x06result\x18\x01 \x01(\x0b\x32\x18.grpc_testauth.user.User\x12\x0f\n\x07success\x18\x02 \x01(\x08\x62\x06proto3')
+  serialized_pb=_b('\n\x18grpc_testauth/user.proto\x12\x12grpc_testauth.user\x1a\x19grpc_testauth/group.proto\x1a\x17grpc_testauth/eve.proto\"\xf3\x01\n\x04User\x12\x0f\n\x07\x61uth_id\x18\x01 \x01(\x05\x12\x10\n\x08sso_uuid\x18\x02 \x01(\t\x12\x10\n\x08username\x18\x03 \x01(\t\x12@\n\x11primary_character\x18\x04 \x01(\x0b\x32%.grpc_testauth.eve.EVEPlayerCharacter\x12\x39\n\ncharacters\x18\x05 \x03(\x0b\x32%.grpc_testauth.eve.EVEPlayerCharacter\x12\x39\n\x06groups\x18\x06 \x03(\x0b\x32).grpc_testauth.group.GroupMembershipEntry\"D\n\x18UserServiceSearchRequest\x12\x13\n\x0bservice_uid\x18\x01 \x01(\t\x12\x13\n\x0bservice_api\x18\x02 \x01(\t\"a\n\x11UserSearchRequest\x12\x11\n\x07\x61uth_id\x18\x01 \x01(\x05H\x00\x12\x12\n\x08username\x18\x02 \x01(\tH\x00\x12\x12\n\x08sso_uuid\x18\x03 \x01(\tH\x00\x42\x11\n\x0fuser_identifier\"O\n\x12UserSearchResponse\x12(\n\x06result\x18\x01 \x01(\x0b\x32\x18.grpc_testauth.user.User\x12\x0f\n\x07success\x18\x02 \x01(\x08\x62\x06proto3')
   ,
   dependencies=[grpc__testauth_dot_group__pb2.DESCRIPTOR,grpc__testauth_dot_eve__pb2.DESCRIPTOR,])
 
@@ -94,6 +94,44 @@ _USER = _descriptor.Descriptor(
 )
 
 
+_USERSERVICESEARCHREQUEST = _descriptor.Descriptor(
+  name='UserServiceSearchRequest',
+  full_name='grpc_testauth.user.UserServiceSearchRequest',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='service_uid', full_name='grpc_testauth.user.UserServiceSearchRequest.service_uid', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='service_api', full_name='grpc_testauth.user.UserServiceSearchRequest.service_api', index=1,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=346,
+  serialized_end=414,
+)
+
+
 _USERSEARCHREQUEST = _descriptor.Descriptor(
   name='UserSearchRequest',
   full_name='grpc_testauth.user.UserSearchRequest',
@@ -137,8 +175,8 @@ _USERSEARCHREQUEST = _descriptor.Descriptor(
       name='user_identifier', full_name='grpc_testauth.user.UserSearchRequest.user_identifier',
       index=0, containing_type=None, fields=[]),
   ],
-  serialized_start=346,
-  serialized_end=443,
+  serialized_start=416,
+  serialized_end=513,
 )
 
 
@@ -175,8 +213,8 @@ _USERSEARCHRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=445,
-  serialized_end=524,
+  serialized_start=515,
+  serialized_end=594,
 )
 
 _USER.fields_by_name['primary_character'].message_type = grpc__testauth_dot_eve__pb2._EVEPLAYERCHARACTER
@@ -193,6 +231,7 @@ _USERSEARCHREQUEST.oneofs_by_name['user_identifier'].fields.append(
 _USERSEARCHREQUEST.fields_by_name['sso_uuid'].containing_oneof = _USERSEARCHREQUEST.oneofs_by_name['user_identifier']
 _USERSEARCHRESPONSE.fields_by_name['result'].message_type = _USER
 DESCRIPTOR.message_types_by_name['User'] = _USER
+DESCRIPTOR.message_types_by_name['UserServiceSearchRequest'] = _USERSERVICESEARCHREQUEST
 DESCRIPTOR.message_types_by_name['UserSearchRequest'] = _USERSEARCHREQUEST
 DESCRIPTOR.message_types_by_name['UserSearchResponse'] = _USERSEARCHRESPONSE
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
@@ -203,6 +242,13 @@ User = _reflection.GeneratedProtocolMessageType('User', (_message.Message,), dic
   # @@protoc_insertion_point(class_scope:grpc_testauth.user.User)
   ))
 _sym_db.RegisterMessage(User)
+
+UserServiceSearchRequest = _reflection.GeneratedProtocolMessageType('UserServiceSearchRequest', (_message.Message,), dict(
+  DESCRIPTOR = _USERSERVICESEARCHREQUEST,
+  __module__ = 'grpc_testauth.user_pb2'
+  # @@protoc_insertion_point(class_scope:grpc_testauth.user.UserServiceSearchRequest)
+  ))
+_sym_db.RegisterMessage(UserServiceSearchRequest)
 
 UserSearchRequest = _reflection.GeneratedProtocolMessageType('UserSearchRequest', (_message.Message,), dict(
   DESCRIPTOR = _USERSEARCHREQUEST,

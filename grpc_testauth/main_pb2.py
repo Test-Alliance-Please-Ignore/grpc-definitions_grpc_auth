@@ -21,7 +21,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='grpc_testauth/main.proto',
   package='grpc_testauth',
   syntax='proto3',
-  serialized_pb=_b('\n\x18grpc_testauth/main.proto\x12\rgrpc_testauth\x1a\x19grpc_testauth/group.proto\x1a\x18grpc_testauth/user.proto2k\n\x0cGroupService\x12[\n\x06Search\x12\'.grpc_testauth.group.GroupSearchRequest\x1a(.grpc_testauth.group.GroupSearchResponse2f\n\x0bUserService\x12W\n\x06Search\x12%.grpc_testauth.user.UserSearchRequest\x1a&.grpc_testauth.user.UserSearchResponseb\x06proto3')
+  serialized_pb=_b('\n\x18grpc_testauth/main.proto\x12\rgrpc_testauth\x1a\x19grpc_testauth/group.proto\x1a\x18grpc_testauth/user.proto2k\n\x0cGroupService\x12[\n\x06Search\x12\'.grpc_testauth.group.GroupSearchRequest\x1a(.grpc_testauth.group.GroupSearchResponse2\xcd\x01\n\x0bUserService\x12W\n\x06Search\x12%.grpc_testauth.user.UserSearchRequest\x1a&.grpc_testauth.user.UserSearchResponse\x12\x65\n\rServiceSearch\x12,.grpc_testauth.user.UserServiceSearchRequest\x1a&.grpc_testauth.user.UserSearchResponseb\x06proto3')
   ,
   dependencies=[grpc__testauth_dot_group__pb2.DESCRIPTOR,grpc__testauth_dot_user__pb2.DESCRIPTOR,])
 
@@ -61,8 +61,8 @@ _USERSERVICE = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=1,
   options=None,
-  serialized_start=205,
-  serialized_end=307,
+  serialized_start=206,
+  serialized_end=411,
   methods=[
   _descriptor.MethodDescriptor(
     name='Search',
@@ -70,6 +70,15 @@ _USERSERVICE = _descriptor.ServiceDescriptor(
     index=0,
     containing_service=None,
     input_type=grpc__testauth_dot_user__pb2._USERSEARCHREQUEST,
+    output_type=grpc__testauth_dot_user__pb2._USERSEARCHRESPONSE,
+    options=None,
+  ),
+  _descriptor.MethodDescriptor(
+    name='ServiceSearch',
+    full_name='grpc_testauth.UserService.ServiceSearch',
+    index=1,
+    containing_service=None,
+    input_type=grpc__testauth_dot_user__pb2._USERSERVICESEARCHREQUEST,
     output_type=grpc__testauth_dot_user__pb2._USERSEARCHRESPONSE,
     options=None,
   ),

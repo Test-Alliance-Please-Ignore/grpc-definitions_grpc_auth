@@ -11,4 +11,5 @@ service GroupService {
 
 service UserService {
     rpc Search (grpc_testauth.user.UserSearchRequest) returns (grpc_testauth.user.UserSearchResponse);
+    rpc ServiceSearch(grpc_testauth.user.UserServiceSearchRequest) returns (grpc_testauth.user.UserSearchResponse);
 }

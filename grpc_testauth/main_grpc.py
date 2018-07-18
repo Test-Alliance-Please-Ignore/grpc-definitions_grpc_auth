@@ -45,12 +45,22 @@ class UserServiceBase(abc.ABC):
     async def Search(self, stream):
         pass
 
+    @abc.abstractmethod
+    async def ServiceSearch(self, stream):
+        pass
+
     def __mapping__(self):
         return {
             '/grpc_testauth.UserService/Search': grpclib.const.Handler(
                 self.Search,
                 grpclib.const.Cardinality.UNARY_UNARY,
                 grpc_testauth.user_pb2.UserSearchRequest,
+                grpc_testauth.user_pb2.UserSearchResponse,
+            ),
+            '/grpc_testauth.UserService/ServiceSearch': grpclib.const.Handler(
+                self.ServiceSearch,
+                grpclib.const.Cardinality.UNARY_UNARY,
+                grpc_testauth.user_pb2.UserServiceSearchRequest,
                 grpc_testauth.user_pb2.UserSearchResponse,
             ),
         }
@@ -63,5 +73,11 @@ class UserServiceStub:
             channel,
             '/grpc_testauth.UserService/Search',
             grpc_testauth.user_pb2.UserSearchRequest,
+            grpc_testauth.user_pb2.UserSearchResponse,
+        )
+        self.ServiceSearch = grpclib.client.UnaryUnaryMethod(
+            channel,
+            '/grpc_testauth.UserService/ServiceSearch',
+            grpc_testauth.user_pb2.UserServiceSearchRequest,
             grpc_testauth.user_pb2.UserSearchResponse,
         )
