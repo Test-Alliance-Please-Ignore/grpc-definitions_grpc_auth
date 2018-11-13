@@ -31,3 +31,12 @@ message UserSearchResponse {
     User result = 1;
     bool success = 2;
 }
+
+message UserPapMinutesRequest {
+    User user = 1;
+    int64 upto_datetime = 2;
+}
+
+message UserPapMinutesResponse {
+    reserved 1-3;
+}

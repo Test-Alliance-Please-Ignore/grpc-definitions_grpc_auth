@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package grpc_testauth.esi;
+
+
+message EsiToken {
+    string access_token = 1;
+    int64 character_id = 2;
+    int64 corporation_id = 3;
+}
+
+
+message CharacterAccessTokenRequest {
+    int64 corporation_id = 1;
+}
+
+message CharacterAccessTokenResponse {
+    bool success = 1;
+    string message = 2;
+    EsiToken token = 3;
+}
