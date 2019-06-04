@@ -8,6 +8,7 @@ import grpclib.client
 
 import grpc_testauth.group_pb2
 import grpc_testauth.user_pb2
+import grpc_testauth.esi_pb2
 import grpc_testauth.main_pb2
 
 
@@ -49,6 +50,10 @@ class UserServiceBase(abc.ABC):
     async def ServiceSearch(self, stream):
         pass
 
+    @abc.abstractmethod
+    async def GetPapMinutes(self, stream):
+        pass
+
     def __mapping__(self):
         return {
             '/grpc_testauth.UserService/Search': grpclib.const.Handler(
@@ -62,6 +67,12 @@ class UserServiceBase(abc.ABC):
                 grpclib.const.Cardinality.UNARY_UNARY,
                 grpc_testauth.user_pb2.UserServiceSearchRequest,
                 grpc_testauth.user_pb2.UserSearchResponse,
+            ),
+            '/grpc_testauth.UserService/GetPapMinutes': grpclib.const.Handler(
+                self.GetPapMinutes,
+                grpclib.const.Cardinality.UNARY_UNARY,
+                grpc_testauth.user_pb2.UserPapMinutesRequest,
+                grpc_testauth.user_pb2.UserPapMinutesResponse,
             ),
         }
 
@@ -80,4 +91,38 @@ class UserServiceStub:
             '/grpc_testauth.UserService/ServiceSearch',
             grpc_testauth.user_pb2.UserServiceSearchRequest,
             grpc_testauth.user_pb2.UserSearchResponse,
+        )
+        self.GetPapMinutes = grpclib.client.UnaryUnaryMethod(
+            channel,
+            '/grpc_testauth.UserService/GetPapMinutes',
+            grpc_testauth.user_pb2.UserPapMinutesRequest,
+            grpc_testauth.user_pb2.UserPapMinutesResponse,
+        )
+
+
+class EsiServiceBase(abc.ABC):
+
+    @abc.abstractmethod
+    async def GetCharacterToken(self, stream):
+        pass
+
+    def __mapping__(self):
+        return {
+            '/grpc_testauth.EsiService/GetCharacterToken': grpclib.const.Handler(
+                self.GetCharacterToken,
+                grpclib.const.Cardinality.UNARY_UNARY,
+                grpc_testauth.esi_pb2.CharacterAccessTokenRequest,
+                grpc_testauth.esi_pb2.CharacterAccessTokenResponse,
+            ),
+        }
+
+
+class EsiServiceStub:
+
+    def __init__(self, channel: grpclib.client.Channel) -> None:
+        self.GetCharacterToken = grpclib.client.UnaryUnaryMethod(
+            channel,
+            '/grpc_testauth.EsiService/GetCharacterToken',
+            grpc_testauth.esi_pb2.CharacterAccessTokenRequest,
+            grpc_testauth.esi_pb2.CharacterAccessTokenResponse,
         )

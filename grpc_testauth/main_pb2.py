@@ -7,7 +7,6 @@ from google.protobuf import descriptor as _descriptor
 from google.protobuf import message as _message
 from google.protobuf import reflection as _reflection
 from google.protobuf import symbol_database as _symbol_database
-from google.protobuf import descriptor_pb2
 # @@protoc_insertion_point(imports)
 
 _sym_db = _symbol_database.Default()
@@ -15,15 +14,17 @@ _sym_db = _symbol_database.Default()
 
 from grpc_testauth import group_pb2 as grpc__testauth_dot_group__pb2
 from grpc_testauth import user_pb2 as grpc__testauth_dot_user__pb2
+from grpc_testauth import esi_pb2 as grpc__testauth_dot_esi__pb2
 
 
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='grpc_testauth/main.proto',
   package='grpc_testauth',
   syntax='proto3',
-  serialized_pb=_b('\n\x18grpc_testauth/main.proto\x12\rgrpc_testauth\x1a\x19grpc_testauth/group.proto\x1a\x18grpc_testauth/user.proto2k\n\x0cGroupService\x12[\n\x06Search\x12\'.grpc_testauth.group.GroupSearchRequest\x1a(.grpc_testauth.group.GroupSearchResponse2\xcd\x01\n\x0bUserService\x12W\n\x06Search\x12%.grpc_testauth.user.UserSearchRequest\x1a&.grpc_testauth.user.UserSearchResponse\x12\x65\n\rServiceSearch\x12,.grpc_testauth.user.UserServiceSearchRequest\x1a&.grpc_testauth.user.UserSearchResponseb\x06proto3')
+  serialized_options=None,
+  serialized_pb=_b('\n\x18grpc_testauth/main.proto\x12\rgrpc_testauth\x1a\x19grpc_testauth/group.proto\x1a\x18grpc_testauth/user.proto\x1a\x17grpc_testauth/esi.proto2k\n\x0cGroupService\x12[\n\x06Search\x12\'.grpc_testauth.group.GroupSearchRequest\x1a(.grpc_testauth.group.GroupSearchResponse2\xb5\x02\n\x0bUserService\x12W\n\x06Search\x12%.grpc_testauth.user.UserSearchRequest\x1a&.grpc_testauth.user.UserSearchResponse\x12\x65\n\rServiceSearch\x12,.grpc_testauth.user.UserServiceSearchRequest\x1a&.grpc_testauth.user.UserSearchResponse\x12\x66\n\rGetPapMinutes\x12).grpc_testauth.user.UserPapMinutesRequest\x1a*.grpc_testauth.user.UserPapMinutesResponse2\x82\x01\n\nEsiService\x12t\n\x11GetCharacterToken\x12..grpc_testauth.esi.CharacterAccessTokenRequest\x1a/.grpc_testauth.esi.CharacterAccessTokenResponseb\x06proto3')
   ,
-  dependencies=[grpc__testauth_dot_group__pb2.DESCRIPTOR,grpc__testauth_dot_user__pb2.DESCRIPTOR,])
+  dependencies=[grpc__testauth_dot_group__pb2.DESCRIPTOR,grpc__testauth_dot_user__pb2.DESCRIPTOR,grpc__testauth_dot_esi__pb2.DESCRIPTOR,])
 
 
 
@@ -36,9 +37,9 @@ _GROUPSERVICE = _descriptor.ServiceDescriptor(
   full_name='grpc_testauth.GroupService',
   file=DESCRIPTOR,
   index=0,
-  options=None,
-  serialized_start=96,
-  serialized_end=203,
+  serialized_options=None,
+  serialized_start=121,
+  serialized_end=228,
   methods=[
   _descriptor.MethodDescriptor(
     name='Search',
@@ -47,7 +48,7 @@ _GROUPSERVICE = _descriptor.ServiceDescriptor(
     containing_service=None,
     input_type=grpc__testauth_dot_group__pb2._GROUPSEARCHREQUEST,
     output_type=grpc__testauth_dot_group__pb2._GROUPSEARCHRESPONSE,
-    options=None,
+    serialized_options=None,
   ),
 ])
 _sym_db.RegisterServiceDescriptor(_GROUPSERVICE)
@@ -60,9 +61,9 @@ _USERSERVICE = _descriptor.ServiceDescriptor(
   full_name='grpc_testauth.UserService',
   file=DESCRIPTOR,
   index=1,
-  options=None,
-  serialized_start=206,
-  serialized_end=411,
+  serialized_options=None,
+  serialized_start=231,
+  serialized_end=540,
   methods=[
   _descriptor.MethodDescriptor(
     name='Search',
@@ -71,7 +72,7 @@ _USERSERVICE = _descriptor.ServiceDescriptor(
     containing_service=None,
     input_type=grpc__testauth_dot_user__pb2._USERSEARCHREQUEST,
     output_type=grpc__testauth_dot_user__pb2._USERSEARCHRESPONSE,
-    options=None,
+    serialized_options=None,
   ),
   _descriptor.MethodDescriptor(
     name='ServiceSearch',
@@ -80,11 +81,44 @@ _USERSERVICE = _descriptor.ServiceDescriptor(
     containing_service=None,
     input_type=grpc__testauth_dot_user__pb2._USERSERVICESEARCHREQUEST,
     output_type=grpc__testauth_dot_user__pb2._USERSEARCHRESPONSE,
-    options=None,
+    serialized_options=None,
+  ),
+  _descriptor.MethodDescriptor(
+    name='GetPapMinutes',
+    full_name='grpc_testauth.UserService.GetPapMinutes',
+    index=2,
+    containing_service=None,
+    input_type=grpc__testauth_dot_user__pb2._USERPAPMINUTESREQUEST,
+    output_type=grpc__testauth_dot_user__pb2._USERPAPMINUTESRESPONSE,
+    serialized_options=None,
   ),
 ])
 _sym_db.RegisterServiceDescriptor(_USERSERVICE)
 
 DESCRIPTOR.services_by_name['UserService'] = _USERSERVICE
+
+
+_ESISERVICE = _descriptor.ServiceDescriptor(
+  name='EsiService',
+  full_name='grpc_testauth.EsiService',
+  file=DESCRIPTOR,
+  index=2,
+  serialized_options=None,
+  serialized_start=543,
+  serialized_end=673,
+  methods=[
+  _descriptor.MethodDescriptor(
+    name='GetCharacterToken',
+    full_name='grpc_testauth.EsiService.GetCharacterToken',
+    index=0,
+    containing_service=None,
+    input_type=grpc__testauth_dot_esi__pb2._CHARACTERACCESSTOKENREQUEST,
+    output_type=grpc__testauth_dot_esi__pb2._CHARACTERACCESSTOKENRESPONSE,
+    serialized_options=None,
+  ),
+])
+_sym_db.RegisterServiceDescriptor(_ESISERVICE)
+
+DESCRIPTOR.services_by_name['EsiService'] = _ESISERVICE
 
 # @@protoc_insertion_point(module_scope)

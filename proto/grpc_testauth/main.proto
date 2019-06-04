@@ -13,9 +13,9 @@ service GroupService {
 service UserService {
     rpc Search (grpc_testauth.user.UserSearchRequest) returns (grpc_testauth.user.UserSearchResponse);
     rpc ServiceSearch(grpc_testauth.user.UserServiceSearchRequest) returns (grpc_testauth.user.UserSearchResponse);
-    rpc GetPapMinutes(grpc_testauth.user.UserPapMinutesRequest) returns (grpc_testauth.user.UserPapMinutesResponse)
+    rpc GetPapMinutes(grpc_testauth.user.UserPapMinutesRequest) returns (grpc_testauth.user.UserPapMinutesResponse);
 }
 
 service EsiService {
-    rpc GetCharacterToken (grpc_testauth.esi.CharacterAccessTokenRequest) returns (grpc_testauth.esi.CharacterAccessTokenResponse)p
+    rpc GetCharacterToken (grpc_testauth.esi.CharacterAccessTokenRequest) returns (grpc_testauth.esi.CharacterAccessTokenResponse);
 }
