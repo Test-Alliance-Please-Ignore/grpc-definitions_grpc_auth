@@ -24,6 +24,7 @@ message UserSearchRequest {
         int32 auth_id = 1;
         string username = 2;
         string sso_uuid = 3;
+        string character_name = 4;
     }
 }
 
