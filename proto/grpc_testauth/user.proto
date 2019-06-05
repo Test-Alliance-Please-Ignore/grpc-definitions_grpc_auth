@@ -12,6 +12,7 @@ message User {
     grpc_testauth.eve.EVEPlayerCharacter primary_character = 4;
     repeated grpc_testauth.eve.EVEPlayerCharacter characters = 5;
     repeated grpc_testauth.group.GroupMembershipEntry groups = 6;
+    string primary_character_name = 7;
 }
 
 message UserServiceSearchRequest {

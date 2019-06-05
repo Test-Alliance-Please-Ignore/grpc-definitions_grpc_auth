@@ -21,7 +21,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='grpc_testauth.user',
   syntax='proto3',
   serialized_options=None,
-  serialized_pb=_b('\n\x18grpc_testauth/user.proto\x12\x12grpc_testauth.user\x1a\x19grpc_testauth/group.proto\x1a\x17grpc_testauth/eve.proto\"\xf3\x01\n\x04User\x12\x0f\n\x07\x61uth_id\x18\x01 \x01(\x05\x12\x10\n\x08sso_uuid\x18\x02 \x01(\t\x12\x10\n\x08username\x18\x03 \x01(\t\x12@\n\x11primary_character\x18\x04 \x01(\x0b\x32%.grpc_testauth.eve.EVEPlayerCharacter\x12\x39\n\ncharacters\x18\x05 \x03(\x0b\x32%.grpc_testauth.eve.EVEPlayerCharacter\x12\x39\n\x06groups\x18\x06 \x03(\x0b\x32).grpc_testauth.group.GroupMembershipEntry\"D\n\x18UserServiceSearchRequest\x12\x13\n\x0bservice_uid\x18\x01 \x01(\t\x12\x13\n\x0bservice_api\x18\x02 \x01(\t\"{\n\x11UserSearchRequest\x12\x11\n\x07\x61uth_id\x18\x01 \x01(\x05H\x00\x12\x12\n\x08username\x18\x02 \x01(\tH\x00\x12\x12\n\x08sso_uuid\x18\x03 \x01(\tH\x00\x12\x18\n\x0e\x63haracter_name\x18\x04 \x01(\tH\x00\x42\x11\n\x0fuser_identifier\"O\n\x12UserSearchResponse\x12(\n\x06result\x18\x01 \x01(\x0b\x32\x18.grpc_testauth.user.User\x12\x0f\n\x07success\x18\x02 \x01(\x08\"V\n\x15UserPapMinutesRequest\x12&\n\x04user\x18\x01 \x01(\x0b\x32\x18.grpc_testauth.user.User\x12\x15\n\rupto_datetime\x18\x02 \x01(\x03\"*\n\x16UserPapMinutesResponseJ\x04\x08\x01\x10\x02J\x04\x08\x02\x10\x03J\x04\x08\x03\x10\x04\x62\x06proto3')
+  serialized_pb=_b('\n\x18grpc_testauth/user.proto\x12\x12grpc_testauth.user\x1a\x19grpc_testauth/group.proto\x1a\x17grpc_testauth/eve.proto\"\x93\x02\n\x04User\x12\x0f\n\x07\x61uth_id\x18\x01 \x01(\x05\x12\x10\n\x08sso_uuid\x18\x02 \x01(\t\x12\x10\n\x08username\x18\x03 \x01(\t\x12@\n\x11primary_character\x18\x04 \x01(\x0b\x32%.grpc_testauth.eve.EVEPlayerCharacter\x12\x39\n\ncharacters\x18\x05 \x03(\x0b\x32%.grpc_testauth.eve.EVEPlayerCharacter\x12\x39\n\x06groups\x18\x06 \x03(\x0b\x32).grpc_testauth.group.GroupMembershipEntry\x12\x1e\n\x16primary_character_name\x18\x07 \x01(\t\"D\n\x18UserServiceSearchRequest\x12\x13\n\x0bservice_uid\x18\x01 \x01(\t\x12\x13\n\x0bservice_api\x18\x02 \x01(\t\"{\n\x11UserSearchRequest\x12\x11\n\x07\x61uth_id\x18\x01 \x01(\x05H\x00\x12\x12\n\x08username\x18\x02 \x01(\tH\x00\x12\x12\n\x08sso_uuid\x18\x03 \x01(\tH\x00\x12\x18\n\x0e\x63haracter_name\x18\x04 \x01(\tH\x00\x42\x11\n\x0fuser_identifier\"O\n\x12UserSearchResponse\x12(\n\x06result\x18\x01 \x01(\x0b\x32\x18.grpc_testauth.user.User\x12\x0f\n\x07success\x18\x02 \x01(\x08\"V\n\x15UserPapMinutesRequest\x12&\n\x04user\x18\x01 \x01(\x0b\x32\x18.grpc_testauth.user.User\x12\x15\n\rupto_datetime\x18\x02 \x01(\x03\"*\n\x16UserPapMinutesResponseJ\x04\x08\x01\x10\x02J\x04\x08\x02\x10\x03J\x04\x08\x03\x10\x04\x62\x06proto3')
   ,
   dependencies=[grpc__testauth_dot_group__pb2.DESCRIPTOR,grpc__testauth_dot_eve__pb2.DESCRIPTOR,])
 
@@ -77,6 +77,13 @@ _USER = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='primary_character_name', full_name='grpc_testauth.user.User.primary_character_name', index=6,
+      number=7, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
@@ -90,7 +97,7 @@ _USER = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=101,
-  serialized_end=344,
+  serialized_end=376,
 )
 
 
@@ -127,8 +134,8 @@ _USERSERVICESEARCHREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=346,
-  serialized_end=414,
+  serialized_start=378,
+  serialized_end=446,
 )
 
 
@@ -182,8 +189,8 @@ _USERSEARCHREQUEST = _descriptor.Descriptor(
       name='user_identifier', full_name='grpc_testauth.user.UserSearchRequest.user_identifier',
       index=0, containing_type=None, fields=[]),
   ],
-  serialized_start=416,
-  serialized_end=539,
+  serialized_start=448,
+  serialized_end=571,
 )
 
 
@@ -220,8 +227,8 @@ _USERSEARCHRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=541,
-  serialized_end=620,
+  serialized_start=573,
+  serialized_end=652,
 )
 
 
@@ -258,8 +265,8 @@ _USERPAPMINUTESREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=622,
-  serialized_end=708,
+  serialized_start=654,
+  serialized_end=740,
 )
 
 
@@ -282,8 +289,8 @@ _USERPAPMINUTESRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=710,
-  serialized_end=752,
+  serialized_start=742,
+  serialized_end=784,
 )
 
 _USER.fields_by_name['primary_character'].message_type = grpc__testauth_dot_eve__pb2._EVEPLAYERCHARACTER
