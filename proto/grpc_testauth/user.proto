@@ -26,6 +26,7 @@ message UserSearchRequest {
         string username = 2;
         string sso_uuid = 3;
         string character_name = 4;
+        string service_uid = 5;
     }
 }
 
