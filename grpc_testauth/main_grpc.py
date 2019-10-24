@@ -2,23 +2,27 @@
 # source: grpc_testauth/main.proto
 # plugin: grpclib.plugin.main
 import abc
+import typing
 
 import grpclib.const
 import grpclib.client
+if typing.TYPE_CHECKING:
+    import grpclib.server
 
 import grpc_testauth.group_pb2
 import grpc_testauth.user_pb2
 import grpc_testauth.esi_pb2
+import grpc_testauth.ping_pb2
 import grpc_testauth.main_pb2
 
 
 class GroupServiceBase(abc.ABC):
 
     @abc.abstractmethod
-    async def Search(self, stream):
+    async def Search(self, stream: 'grpclib.server.Stream[grpc_testauth.group_pb2.GroupSearchRequest, grpc_testauth.group_pb2.GroupSearchResponse]') -> None:
         pass
 
-    def __mapping__(self):
+    def __mapping__(self) -> typing.Dict[str, grpclib.const.Handler]:
         return {
             '/grpc_testauth.GroupService/Search': grpclib.const.Handler(
                 self.Search,
@@ -43,18 +47,18 @@ class GroupServiceStub:
 class UserServiceBase(abc.ABC):
 
     @abc.abstractmethod
-    async def Search(self, stream):
+    async def Search(self, stream: 'grpclib.server.Stream[grpc_testauth.user_pb2.UserSearchRequest, grpc_testauth.user_pb2.UserSearchResponse]') -> None:
         pass
 
     @abc.abstractmethod
-    async def ServiceSearch(self, stream):
+    async def ServiceSearch(self, stream: 'grpclib.server.Stream[grpc_testauth.user_pb2.UserServiceSearchRequest, grpc_testauth.user_pb2.UserSearchResponse]') -> None:
         pass
 
     @abc.abstractmethod
-    async def GetPapMinutes(self, stream):
+    async def GetPapMinutes(self, stream: 'grpclib.server.Stream[grpc_testauth.user_pb2.UserPapMinutesRequest, grpc_testauth.user_pb2.UserPapMinutesResponse]') -> None:
         pass
 
-    def __mapping__(self):
+    def __mapping__(self) -> typing.Dict[str, grpclib.const.Handler]:
         return {
             '/grpc_testauth.UserService/Search': grpclib.const.Handler(
                 self.Search,
@@ -103,10 +107,10 @@ class UserServiceStub:
 class EsiServiceBase(abc.ABC):
 
     @abc.abstractmethod
-    async def GetCharacterToken(self, stream):
+    async def GetCharacterToken(self, stream: 'grpclib.server.Stream[grpc_testauth.esi_pb2.CharacterAccessTokenRequest, grpc_testauth.esi_pb2.CharacterAccessTokenResponse]') -> None:
         pass
 
-    def __mapping__(self):
+    def __mapping__(self) -> typing.Dict[str, grpclib.const.Handler]:
         return {
             '/grpc_testauth.EsiService/GetCharacterToken': grpclib.const.Handler(
                 self.GetCharacterToken,
@@ -125,4 +129,32 @@ class EsiServiceStub:
             '/grpc_testauth.EsiService/GetCharacterToken',
             grpc_testauth.esi_pb2.CharacterAccessTokenRequest,
             grpc_testauth.esi_pb2.CharacterAccessTokenResponse,
+        )
+
+
+class PingServiceBase(abc.ABC):
+
+    @abc.abstractmethod
+    async def Search(self, stream: 'grpclib.server.Stream[grpc_testauth.ping_pb2.PingSearchRequest, grpc_testauth.ping_pb2.PingSearchResponse]') -> None:
+        pass
+
+    def __mapping__(self) -> typing.Dict[str, grpclib.const.Handler]:
+        return {
+            '/grpc_testauth.PingService/Search': grpclib.const.Handler(
+                self.Search,
+                grpclib.const.Cardinality.UNARY_UNARY,
+                grpc_testauth.ping_pb2.PingSearchRequest,
+                grpc_testauth.ping_pb2.PingSearchResponse,
+            ),
+        }
+
+
+class PingServiceStub:
+
+    def __init__(self, channel: grpclib.client.Channel) -> None:
+        self.Search = grpclib.client.UnaryUnaryMethod(
+            channel,
+            '/grpc_testauth.PingService/Search',
+            grpc_testauth.ping_pb2.PingSearchRequest,
+            grpc_testauth.ping_pb2.PingSearchResponse,
         )
