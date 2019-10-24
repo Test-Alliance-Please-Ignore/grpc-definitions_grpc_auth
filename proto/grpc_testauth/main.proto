@@ -3,6 +3,7 @@ syntax = "proto3";
 import "grpc_testauth/group.proto";
 import "grpc_testauth/user.proto";
 import "grpc_testauth/esi.proto";
+import "grpc_testauth/ping.proto";
 
 package grpc_testauth;
 
@@ -18,4 +19,8 @@ service UserService {
 
 service EsiService {
     rpc GetCharacterToken (grpc_testauth.esi.CharacterAccessTokenRequest) returns (grpc_testauth.esi.CharacterAccessTokenResponse);
+}
+
+service PingService {
+    rpc Search (grpc_testauth.ping.PingSearchRequest) returns (grpc_testauth.ping.PingSearchResponse);
 }

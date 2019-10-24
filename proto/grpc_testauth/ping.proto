@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package grpc_testauth.ping;
+
+
+message Ping {
+    string token = 1;
+    string body = 2;
+    string timestamp = 3;
+    string fc_character_name = 4;
+    uint32 fc_character_id = 5;
+}
+
+message PingSearchRequest {
+    string token = 1;
+}
+
+message PingSearchResponse {
+    bool success = 1;
+    Ping ping = 2;
+}
