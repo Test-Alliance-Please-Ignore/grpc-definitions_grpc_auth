@@ -41,7 +41,7 @@ message UserPapMinutesRequest {
 }
 
 message UserPapMinutesResponse {
-    reserved 1;
+    int32 minutes = 1;
     reserved 2;
     reserved 3;
 }

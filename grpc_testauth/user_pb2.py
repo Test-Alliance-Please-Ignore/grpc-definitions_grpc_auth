@@ -22,7 +22,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='grpc_testauth.user',
   syntax='proto3',
   serialized_options=None,
-  serialized_pb=_b('\n\x18grpc_testauth/user.proto\x12\x12grpc_testauth.user\x1a\x19grpc_testauth/group.proto\x1a\x17grpc_testauth/eve.proto\"\x93\x02\n\x04User\x12\x0f\n\x07\x61uth_id\x18\x01 \x01(\x05\x12\x10\n\x08sso_uuid\x18\x02 \x01(\t\x12\x10\n\x08username\x18\x03 \x01(\t\x12@\n\x11primary_character\x18\x04 \x01(\x0b\x32%.grpc_testauth.eve.EVEPlayerCharacter\x12\x39\n\ncharacters\x18\x05 \x03(\x0b\x32%.grpc_testauth.eve.EVEPlayerCharacter\x12\x39\n\x06groups\x18\x06 \x03(\x0b\x32).grpc_testauth.group.GroupMembershipEntry\x12\x1e\n\x16primary_character_name\x18\x07 \x01(\t\"D\n\x18UserServiceSearchRequest\x12\x13\n\x0bservice_uid\x18\x01 \x01(\t\x12\x13\n\x0bservice_api\x18\x02 \x01(\t\"\x92\x01\n\x11UserSearchRequest\x12\x11\n\x07\x61uth_id\x18\x01 \x01(\x05H\x00\x12\x12\n\x08username\x18\x02 \x01(\tH\x00\x12\x12\n\x08sso_uuid\x18\x03 \x01(\tH\x00\x12\x18\n\x0e\x63haracter_name\x18\x04 \x01(\tH\x00\x12\x15\n\x0bservice_uid\x18\x05 \x01(\tH\x00\x42\x11\n\x0fuser_identifier\"O\n\x12UserSearchResponse\x12(\n\x06result\x18\x01 \x01(\x0b\x32\x18.grpc_testauth.user.User\x12\x0f\n\x07success\x18\x02 \x01(\x08\"V\n\x15UserPapMinutesRequest\x12&\n\x04user\x18\x01 \x01(\x0b\x32\x18.grpc_testauth.user.User\x12\x15\n\rupto_datetime\x18\x02 \x01(\x03\"*\n\x16UserPapMinutesResponseJ\x04\x08\x01\x10\x02J\x04\x08\x02\x10\x03J\x04\x08\x03\x10\x04\x62\x06proto3')
+  serialized_pb=_b('\n\x18grpc_testauth/user.proto\x12\x12grpc_testauth.user\x1a\x19grpc_testauth/group.proto\x1a\x17grpc_testauth/eve.proto\"\x93\x02\n\x04User\x12\x0f\n\x07\x61uth_id\x18\x01 \x01(\x05\x12\x10\n\x08sso_uuid\x18\x02 \x01(\t\x12\x10\n\x08username\x18\x03 \x01(\t\x12@\n\x11primary_character\x18\x04 \x01(\x0b\x32%.grpc_testauth.eve.EVEPlayerCharacter\x12\x39\n\ncharacters\x18\x05 \x03(\x0b\x32%.grpc_testauth.eve.EVEPlayerCharacter\x12\x39\n\x06groups\x18\x06 \x03(\x0b\x32).grpc_testauth.group.GroupMembershipEntry\x12\x1e\n\x16primary_character_name\x18\x07 \x01(\t\"D\n\x18UserServiceSearchRequest\x12\x13\n\x0bservice_uid\x18\x01 \x01(\t\x12\x13\n\x0bservice_api\x18\x02 \x01(\t\"\x92\x01\n\x11UserSearchRequest\x12\x11\n\x07\x61uth_id\x18\x01 \x01(\x05H\x00\x12\x12\n\x08username\x18\x02 \x01(\tH\x00\x12\x12\n\x08sso_uuid\x18\x03 \x01(\tH\x00\x12\x18\n\x0e\x63haracter_name\x18\x04 \x01(\tH\x00\x12\x15\n\x0bservice_uid\x18\x05 \x01(\tH\x00\x42\x11\n\x0fuser_identifier\"O\n\x12UserSearchResponse\x12(\n\x06result\x18\x01 \x01(\x0b\x32\x18.grpc_testauth.user.User\x12\x0f\n\x07success\x18\x02 \x01(\x08\"V\n\x15UserPapMinutesRequest\x12&\n\x04user\x18\x01 \x01(\x0b\x32\x18.grpc_testauth.user.User\x12\x15\n\rupto_datetime\x18\x02 \x01(\x03\"5\n\x16UserPapMinutesResponse\x12\x0f\n\x07minutes\x18\x01 \x01(\x05J\x04\x08\x02\x10\x03J\x04\x08\x03\x10\x04\x62\x06proto3')
   ,
   dependencies=[grpc__testauth_dot_group__pb2.DESCRIPTOR,grpc__testauth_dot_eve__pb2.DESCRIPTOR,])
 
@@ -285,6 +285,13 @@ _USERPAPMINUTESRESPONSE = _descriptor.Descriptor(
   file=DESCRIPTOR,
   containing_type=None,
   fields=[
+    _descriptor.FieldDescriptor(
+      name='minutes', full_name='grpc_testauth.user.UserPapMinutesResponse.minutes', index=0,
+      number=1, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
@@ -298,7 +305,7 @@ _USERPAPMINUTESRESPONSE = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=766,
-  serialized_end=808,
+  serialized_end=819,
 )
 
 _USER.fields_by_name['primary_character'].message_type = grpc__testauth_dot_eve__pb2._EVEPLAYERCHARACTER
