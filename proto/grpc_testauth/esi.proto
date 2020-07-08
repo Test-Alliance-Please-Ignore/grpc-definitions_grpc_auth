@@ -19,3 +19,112 @@ message CharacterAccessTokenResponse {
     string message = 2;
     EsiToken token = 3;
 }
+
+message EsiCharacter {
+    int64 character_id = 1;
+    int64 alliance_id = 2;
+    int32 ancestry_id = 3;
+    string birthday = 4;
+    int32 bloodline_id = 5;
+    int64 corporation_id = 6;
+    string description = 7;
+    int32 faction_id = 8;
+    string gender = 9;
+    string name = 10;
+    int32 race_id = 11;
+    float security_status = 12;
+    string title = 13;
+}
+
+
+
+message EsiCorporation {
+    // Fields on CCP Esi Corporation Model
+    int64 alliance_id = 1;
+    int64 ceo_id = 2;
+    int64 creator_id = 3;
+    string date_founded = 4;
+    string description = 5;
+    int64 faction_id = 6;
+    int64 home_station_id = 7;
+    int64 member_count = 8;
+    string name = 9;
+    int64 shares = 10;
+    float tax_rate = 11;
+    string ticker = 12;
+    string url = 13;
+    bool war_eligible = 14;
+
+    // Reserving fields for more ccp expansion
+    reserved 15 to 29;
+
+    // Custom tracking fields
+    int64 corporation_id = 30;
+}
+
+message EsiAlliance {
+    int64 creator_corporation_id = 1;
+    int64 creator_id = 2;
+    string date_founded = 3;
+    int64 executor_corporation_id = 4;
+    int64 faction_id = 5;
+    string name = 6;
+    string ticker = 7;
+
+    // Reserving fields for more ccp expansion
+    reserved 8 to 20;
+
+    // custom tracking fields
+    int64 alliance_id = 21;
+}
+
+message EsiCharacterSkill {
+    int32 active_skill_level = 1;
+    int32 skill_id = 2;
+    int64 skillpoints_in_skill = 3;
+    int32 trained_skill_level = 4;
+}
+
+message EsiCharacterSkills {
+    int64 total_sp = 1;
+    int32 unallocated_sp = 2;
+    repeated EsiCharacterSkill skills = 3;
+}
+
+
+
+
+
+
+
+
+
+
+// Request/Response Pairs
+
+message CharacterUpdateRequest {
+    EsiCharacter character = 1;
+}
+
+message CharacterUpdateResponse {
+    bool success = 1;
+    string message = 2;
+}
+
+message CorporationUpdateRequest {
+    EsiCorporation corporation = 1;
+}
+
+message CorporationUpdateResponse {
+    bool success = 1;
+    string message = 2;
+}
+
+message CharacterSkillsUpdateRequest {
+    EsiCharacterSkills skills = 1;
+}
+
+message CharacterSkillsUpdateResponse {
+    bool success = 1;
+    string message = 2;
+}

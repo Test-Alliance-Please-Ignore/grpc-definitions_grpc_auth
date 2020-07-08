@@ -19,6 +19,9 @@ service UserService {
 
 service EsiService {
     rpc GetCharacterToken (grpc_testauth.esi.CharacterAccessTokenRequest) returns (grpc_testauth.esi.CharacterAccessTokenResponse);
+    rpc UpdateCharacter (grpc_testauth.esi.CharacterUpdateRequest) returns (grpc_testauth.esi.CharacterUpdateResponse);
+    rpc UpdateCorporation (grpc_testauth.esi.CorporationUpdateRequest) returns (grpc_testauth.esi.CorporationUpdateResponse);
+    rpc UpdateCharacterSkills (grpc_testauth.esi.CharacterSkillsUpdateRequest) returns (grpc_testauth.esi.CharacterSkillsUpdateResponse);
 }
 
 service PingService {
