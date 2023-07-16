@@ -110,6 +110,18 @@ class EsiServiceBase(abc.ABC):
     async def GetCharacterToken(self, stream: 'grpclib.server.Stream[grpc_testauth.esi_pb2.CharacterAccessTokenRequest, grpc_testauth.esi_pb2.CharacterAccessTokenResponse]') -> None:
         pass
 
+    @abc.abstractmethod
+    async def UpdateCharacter(self, stream: 'grpclib.server.Stream[grpc_testauth.esi_pb2.CharacterUpdateRequest, grpc_testauth.esi_pb2.CharacterUpdateResponse]') -> None:
+        pass
+
+    @abc.abstractmethod
+    async def UpdateCorporation(self, stream: 'grpclib.server.Stream[grpc_testauth.esi_pb2.CorporationUpdateRequest, grpc_testauth.esi_pb2.CorporationUpdateResponse]') -> None:
+        pass
+
+    @abc.abstractmethod
+    async def UpdateCharacterSkills(self, stream: 'grpclib.server.Stream[grpc_testauth.esi_pb2.CharacterSkillsUpdateRequest, grpc_testauth.esi_pb2.CharacterSkillsUpdateResponse]') -> None:
+        pass
+
     def __mapping__(self) -> typing.Dict[str, grpclib.const.Handler]:
         return {
             '/grpc_testauth.EsiService/GetCharacterToken': grpclib.const.Handler(
@@ -117,6 +129,24 @@ class EsiServiceBase(abc.ABC):
                 grpclib.const.Cardinality.UNARY_UNARY,
                 grpc_testauth.esi_pb2.CharacterAccessTokenRequest,
                 grpc_testauth.esi_pb2.CharacterAccessTokenResponse,
+            ),
+            '/grpc_testauth.EsiService/UpdateCharacter': grpclib.const.Handler(
+                self.UpdateCharacter,
+                grpclib.const.Cardinality.UNARY_UNARY,
+                grpc_testauth.esi_pb2.CharacterUpdateRequest,
+                grpc_testauth.esi_pb2.CharacterUpdateResponse,
+            ),
+            '/grpc_testauth.EsiService/UpdateCorporation': grpclib.const.Handler(
+                self.UpdateCorporation,
+                grpclib.const.Cardinality.UNARY_UNARY,
+                grpc_testauth.esi_pb2.CorporationUpdateRequest,
+                grpc_testauth.esi_pb2.CorporationUpdateResponse,
+            ),
+            '/grpc_testauth.EsiService/UpdateCharacterSkills': grpclib.const.Handler(
+                self.UpdateCharacterSkills,
+                grpclib.const.Cardinality.UNARY_UNARY,
+                grpc_testauth.esi_pb2.CharacterSkillsUpdateRequest,
+                grpc_testauth.esi_pb2.CharacterSkillsUpdateResponse,
             ),
         }
 
@@ -129,6 +159,24 @@ class EsiServiceStub:
             '/grpc_testauth.EsiService/GetCharacterToken',
             grpc_testauth.esi_pb2.CharacterAccessTokenRequest,
             grpc_testauth.esi_pb2.CharacterAccessTokenResponse,
+        )
+        self.UpdateCharacter = grpclib.client.UnaryUnaryMethod(
+            channel,
+            '/grpc_testauth.EsiService/UpdateCharacter',
+            grpc_testauth.esi_pb2.CharacterUpdateRequest,
+            grpc_testauth.esi_pb2.CharacterUpdateResponse,
+        )
+        self.UpdateCorporation = grpclib.client.UnaryUnaryMethod(
+            channel,
+            '/grpc_testauth.EsiService/UpdateCorporation',
+            grpc_testauth.esi_pb2.CorporationUpdateRequest,
+            grpc_testauth.esi_pb2.CorporationUpdateResponse,
+        )
+        self.UpdateCharacterSkills = grpclib.client.UnaryUnaryMethod(
+            channel,
+            '/grpc_testauth.EsiService/UpdateCharacterSkills',
+            grpc_testauth.esi_pb2.CharacterSkillsUpdateRequest,
+            grpc_testauth.esi_pb2.CharacterSkillsUpdateResponse,
         )
 
 

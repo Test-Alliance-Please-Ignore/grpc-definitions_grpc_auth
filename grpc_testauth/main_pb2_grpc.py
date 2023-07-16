@@ -57,6 +57,7 @@ class GroupService(object):
             options=(),
             channel_credentials=None,
             call_credentials=None,
+            insecure=False,
             compression=None,
             wait_for_ready=None,
             timeout=None,
@@ -65,7 +66,7 @@ class GroupService(object):
             grpc__testauth_dot_group__pb2.GroupSearchRequest.SerializeToString,
             grpc__testauth_dot_group__pb2.GroupSearchResponse.FromString,
             options, channel_credentials,
-            call_credentials, compression, wait_for_ready, timeout, metadata)
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
 
 class UserServiceStub(object):
@@ -149,6 +150,7 @@ class UserService(object):
             options=(),
             channel_credentials=None,
             call_credentials=None,
+            insecure=False,
             compression=None,
             wait_for_ready=None,
             timeout=None,
@@ -157,7 +159,7 @@ class UserService(object):
             grpc__testauth_dot_user__pb2.UserSearchRequest.SerializeToString,
             grpc__testauth_dot_user__pb2.UserSearchResponse.FromString,
             options, channel_credentials,
-            call_credentials, compression, wait_for_ready, timeout, metadata)
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
     @staticmethod
     def ServiceSearch(request,
@@ -165,6 +167,7 @@ class UserService(object):
             options=(),
             channel_credentials=None,
             call_credentials=None,
+            insecure=False,
             compression=None,
             wait_for_ready=None,
             timeout=None,
@@ -173,7 +176,7 @@ class UserService(object):
             grpc__testauth_dot_user__pb2.UserServiceSearchRequest.SerializeToString,
             grpc__testauth_dot_user__pb2.UserSearchResponse.FromString,
             options, channel_credentials,
-            call_credentials, compression, wait_for_ready, timeout, metadata)
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
     @staticmethod
     def GetPapMinutes(request,
@@ -181,6 +184,7 @@ class UserService(object):
             options=(),
             channel_credentials=None,
             call_credentials=None,
+            insecure=False,
             compression=None,
             wait_for_ready=None,
             timeout=None,
@@ -189,7 +193,7 @@ class UserService(object):
             grpc__testauth_dot_user__pb2.UserPapMinutesRequest.SerializeToString,
             grpc__testauth_dot_user__pb2.UserPapMinutesResponse.FromString,
             options, channel_credentials,
-            call_credentials, compression, wait_for_ready, timeout, metadata)
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
 
 class EsiServiceStub(object):
@@ -206,12 +210,45 @@ class EsiServiceStub(object):
                 request_serializer=grpc__testauth_dot_esi__pb2.CharacterAccessTokenRequest.SerializeToString,
                 response_deserializer=grpc__testauth_dot_esi__pb2.CharacterAccessTokenResponse.FromString,
                 )
+        self.UpdateCharacter = channel.unary_unary(
+                '/grpc_testauth.EsiService/UpdateCharacter',
+                request_serializer=grpc__testauth_dot_esi__pb2.CharacterUpdateRequest.SerializeToString,
+                response_deserializer=grpc__testauth_dot_esi__pb2.CharacterUpdateResponse.FromString,
+                )
+        self.UpdateCorporation = channel.unary_unary(
+                '/grpc_testauth.EsiService/UpdateCorporation',
+                request_serializer=grpc__testauth_dot_esi__pb2.CorporationUpdateRequest.SerializeToString,
+                response_deserializer=grpc__testauth_dot_esi__pb2.CorporationUpdateResponse.FromString,
+                )
+        self.UpdateCharacterSkills = channel.unary_unary(
+                '/grpc_testauth.EsiService/UpdateCharacterSkills',
+                request_serializer=grpc__testauth_dot_esi__pb2.CharacterSkillsUpdateRequest.SerializeToString,
+                response_deserializer=grpc__testauth_dot_esi__pb2.CharacterSkillsUpdateResponse.FromString,
+                )
 
 
 class EsiServiceServicer(object):
     """Missing associated documentation comment in .proto file."""
 
     def GetCharacterToken(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def UpdateCharacter(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def UpdateCorporation(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def UpdateCharacterSkills(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
@@ -224,6 +261,21 @@ def add_EsiServiceServicer_to_server(servicer, server):
                     servicer.GetCharacterToken,
                     request_deserializer=grpc__testauth_dot_esi__pb2.CharacterAccessTokenRequest.FromString,
                     response_serializer=grpc__testauth_dot_esi__pb2.CharacterAccessTokenResponse.SerializeToString,
+            ),
+            'UpdateCharacter': grpc.unary_unary_rpc_method_handler(
+                    servicer.UpdateCharacter,
+                    request_deserializer=grpc__testauth_dot_esi__pb2.CharacterUpdateRequest.FromString,
+                    response_serializer=grpc__testauth_dot_esi__pb2.CharacterUpdateResponse.SerializeToString,
+            ),
+            'UpdateCorporation': grpc.unary_unary_rpc_method_handler(
+                    servicer.UpdateCorporation,
+                    request_deserializer=grpc__testauth_dot_esi__pb2.CorporationUpdateRequest.FromString,
+                    response_serializer=grpc__testauth_dot_esi__pb2.CorporationUpdateResponse.SerializeToString,
+            ),
+            'UpdateCharacterSkills': grpc.unary_unary_rpc_method_handler(
+                    servicer.UpdateCharacterSkills,
+                    request_deserializer=grpc__testauth_dot_esi__pb2.CharacterSkillsUpdateRequest.FromString,
+                    response_serializer=grpc__testauth_dot_esi__pb2.CharacterSkillsUpdateResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -241,6 +293,7 @@ class EsiService(object):
             options=(),
             channel_credentials=None,
             call_credentials=None,
+            insecure=False,
             compression=None,
             wait_for_ready=None,
             timeout=None,
@@ -249,7 +302,58 @@ class EsiService(object):
             grpc__testauth_dot_esi__pb2.CharacterAccessTokenRequest.SerializeToString,
             grpc__testauth_dot_esi__pb2.CharacterAccessTokenResponse.FromString,
             options, channel_credentials,
-            call_credentials, compression, wait_for_ready, timeout, metadata)
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def UpdateCharacter(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/grpc_testauth.EsiService/UpdateCharacter',
+            grpc__testauth_dot_esi__pb2.CharacterUpdateRequest.SerializeToString,
+            grpc__testauth_dot_esi__pb2.CharacterUpdateResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def UpdateCorporation(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/grpc_testauth.EsiService/UpdateCorporation',
+            grpc__testauth_dot_esi__pb2.CorporationUpdateRequest.SerializeToString,
+            grpc__testauth_dot_esi__pb2.CorporationUpdateResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def UpdateCharacterSkills(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/grpc_testauth.EsiService/UpdateCharacterSkills',
+            grpc__testauth_dot_esi__pb2.CharacterSkillsUpdateRequest.SerializeToString,
+            grpc__testauth_dot_esi__pb2.CharacterSkillsUpdateResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
 
 class PingServiceStub(object):
@@ -301,6 +405,7 @@ class PingService(object):
             options=(),
             channel_credentials=None,
             call_credentials=None,
+            insecure=False,
             compression=None,
             wait_for_ready=None,
             timeout=None,
@@ -309,4 +414,4 @@ class PingService(object):
             grpc__testauth_dot_ping__pb2.PingSearchRequest.SerializeToString,
             grpc__testauth_dot_ping__pb2.PingSearchResponse.FromString,
             options, channel_credentials,
-            call_credentials, compression, wait_for_ready, timeout, metadata)
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
